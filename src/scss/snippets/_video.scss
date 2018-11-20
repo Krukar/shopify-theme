@@ -1,0 +1,26 @@
+/* ============
+_video.scss
+Video Player
+============ */
+
+.video {
+  &__container {
+    position: relative;
+    overflow: hidden;
+
+    padding-bottom: 56.25%;
+    padding-top: rem(30);
+
+    height: 0;
+  }
+
+  &__iframe {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    height: 100%;
+    width: 100%;
+  }
+}

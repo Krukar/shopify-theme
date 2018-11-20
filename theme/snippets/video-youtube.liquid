@@ -1,0 +1,73 @@
+{% comment %}
+
+  video-youtube.liquid
+
+  {% include 'video-youtube' with id: 'xVDyFxbF3LI', autoplay: true, rel: true, parameters: '&color=white' %}
+
+  id:         string*  
+  autoplay:   boolean (default: false)
+  rel:        boolean (default: false)
+  parameters: string
+
+  * Denotes required
+
+  Video player support YouTube embedding. 
+  https://www.youtube.com/embed/<ID>?paramA=value&paramB=value
+
+  Useful Parameters:
+    - autoplay
+    - controls
+    - rel (related videos)    
+    - showinfo (title and other info)
+    - color (red / white)    
+    - loop
+    - disablekb (keyboard controls)
+    - modestbranding (youtube logo)        
+    - cc_load_policy (closed caption)
+
+  Full List: 
+  https://developers.google.com/youtube/player_parameters
+
+{% endcomment %}
+
+{% if id %}
+  {% assign url_base = 'https://www.youtube.com/embed/' | append: id %}
+  {% assign url_params = '?' %}
+
+  {% comment %}
+    Related Videos
+  {% endcomment %}
+  {% if rel %}
+    {% assign url_params = url_params | append: 'rel=1' %}
+  {% else %}
+    {% assign url_params = url_params | append: 'rel=0' %}
+  {% endif %}  
+
+  {% comment %}
+    Autoplay
+  {% endcomment %}
+  {% if autoplay %}
+    {% assign url_params = url_params | append: '&autoplay=1' %}  
+  {% else %}
+    {% assign url_params = url_params | append: '&autoplay=0' %}  
+  {% endif %}
+  
+  {% comment %}
+    Additional Parameters
+  {% endcomment %}
+  {% if parameters %}
+    {% assign url_params = url_params | append: parameters %}  
+  {% endif %}
+
+  {% comment %}
+    iFrame Embed for YouTube
+  {% endcomment %}
+  <div class="video__container video__container--youtube">
+    <iframe src="{{ url_base | append: url_params }}" 
+            class="video__iframe" 
+            frameborder="0" 
+            allow="autoplay; encrypted-media" 
+            allowfullscreen>          
+    </iframe>
+  </div>  
+{% endif %}

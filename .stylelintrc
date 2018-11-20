@@ -1,0 +1,108 @@
+{
+   "extends": "stylelint-config-standard",
+   "plugins": [
+      "stylelint-order"
+   ],
+   "rules": {
+      "at-rule-no-unknown": [
+         true,
+         {
+            "ignoreAtRules": [
+              "content",
+              "for",
+              "function",
+              "include",
+              "mixin",
+              "return"
+            ]
+         }
+      ],
+      "declaration-empty-line-before": null,
+      "order/order": [
+        "at-variables",
+        "declarations",
+        "rules",
+        {
+          "type": "at-rule",
+          "name": "include",
+          "parameter": "medium"
+        },
+        {
+          "type": "at-rule",
+          "name": "include",
+          "parameter": "large"
+        }
+      ],
+      "order/properties-order": [
+         {
+            "emptyLineBefore": "never",
+            "properties": [
+               "content",
+               "display",
+               "flex",
+               "visibiltiy"
+            ]
+         },
+         {
+            "emptyLineBefore": "always",
+            "properties": [
+               "position",
+               "top",
+               "left",
+               "right",
+               "bottom"
+            ]
+         },
+         {
+            "emptyLineBefore": "always",
+            "properties": [
+               "height",
+               "max-height",
+               "width",
+               "max-width",
+               "margin",
+               "padding"
+            ]
+         },
+         {
+            "emptyLineBefore": "always",
+            "properties": [
+               "border",
+               "border-radius",
+               "border-color",
+               "outline"
+            ]
+         },
+         {
+            "emptyLineBefore": "always",
+            "properties": [
+               "background",
+               "color"
+            ]
+         },
+         {
+            "emptyLineBefore": "always",
+            "properties": [
+               "font-family",
+               "font-size",
+               "font-weight"
+            ]
+         },
+         {
+           "emptyLineBefore": "always",
+           "properties": [
+              "list-style"
+           ]
+         },
+         {
+            "emptyLineBefore": "always",
+            "properties": [
+               "cursor",
+               "opacity"
+            ]
+         }
+      ],
+      "property-no-unknown": [true, "ignoreProperties" : ["sm", "md", "lg", "xl"]],
+      "selector-pseudo-class-no-unknown": [true, "ignorePseudoClasses" : ["export", "import"]]
+   }
+}

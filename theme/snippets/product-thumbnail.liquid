@@ -1,0 +1,25 @@
+{% comment %} 
+    
+    product-thumbnail.liquid
+
+    Outputs product thumbnail including product image, title and price
+
+    {% include 'product-thumbnail' with [product] %} 
+
+ {% endcomment %}
+
+ <div class="product-thumbnail">    
+    {% include 'badges' %}
+    
+    <div class="product-thumbnail__image-container">
+        <img class="product-thumbnail__image" src="{{ product.featured_image | img_url }}" alt="{{ product.featured_image.alt }}">
+    </div>
+    
+    <a class="product-thumbnail__link" href="{{ product.url }}">
+        <span class="product-thumbnail__title">{{ product.title }}</span>
+    </a>
+    
+    <div class="product-thumbnail__price">
+        {% include 'product-price' %}
+    </div>
+ </div>

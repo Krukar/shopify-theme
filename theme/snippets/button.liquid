@@ -1,0 +1,30 @@
+{% comment %}
+
+  button.liquid
+
+  {% include 'button' with class: 'class', text: 'text', type: 'button' %}
+
+  text: text button*
+  class: button + class
+  type: DEFAULT: button
+  disabled: boolean
+
+  * Denotes required
+
+  TODO: Accessbilitiy review
+{% endcomment %}
+<button
+  class="button{% unless class == blank %} button--{{ class }}{% endunless %}"
+
+  {% if type == blank %}
+    type="button"
+  {% else %}
+    type="{{ type }}"
+  {% endif %}
+
+  {% if disabled == true %}
+    disabled
+  {% endif %}
+  >
+  {{ text }}
+</button>

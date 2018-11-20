@@ -1,0 +1,43 @@
+{% comment %}
+
+  accordion.liquid
+
+  Generic accordion
+
+  {% include 'accordion' with id: id %}
+
+{% endcomment %}
+
+<ul class="accordion accordion--{{id}}" role="presentation">
+
+  <li class="accordion__item accordion__item--{{id}}" role="heading" aria-level="3">
+    <button id="accordion__1--{{id}}" class="js__accordion-trigger accordion__trigger accordion__trigger--{{id}}" aria-expanded="false" aria-controls="section__1--{{id}}" type="button">
+      Section 1 Button 
+      {% include 'icon' with class: 'plus' %}
+    </button>
+  </li>
+  <div id="section__1--{{id}}" class="accordion__content accordion__content--{{id}}" role="region" aria-labelledby="accordion__1--{{id}}" hidden>
+    Section 1 Content
+  </div>
+
+  <li class="accordion__item accordion__item--{{id}}" role="heading" aria-level="3">
+    <button id="accordion__2--{{id}}" class="js__accordion-trigger accordion__trigger accordion__trigger--{{id}}" aria-expanded="false" aria-controls="section__2--{{id}}" type="button">
+      Section 2 Button 
+      {% include 'icon' with class: 'plus' %}
+    </button>
+  </li>
+  <div id="section__2--{{id}}" class="accordion__content accordion__content--{{id}}" role="region" aria-labelledby="accordion__2--{{id}}" hidden>
+    Section 2 Content
+  </div>
+
+  <li class="accordion__item accordion__item--{{id}}" role="heading" aria-level="3">
+    <button id="accordion__3--{{id}}" class="js__accordion-trigger accordion__trigger accordion__trigger--{{id}}" aria-expanded="false" aria-controls="section__3--{{id}}" type="button">
+      Section 3 Button 
+      {% include 'icon' with class: 'plus' %}
+    </button>
+  </li>
+  <div id="section__3--{{id}}" class="accordion__content accordion__content--{{id}}" role="region" aria-labelledby="accordion__3--{{id}}" hidden>
+    Section 3 Content
+  </div>
+   
+</ul>

@@ -1,0 +1,18 @@
+/* ============
+_style_guide.scss
+Style Guide
+============ */
+
+.style-guide {
+  .row {
+    margin-bottom: rem(16);
+  }
+
+  .icon-example {
+    text-align: center;
+
+    p {
+      margin-top: rem(4);
+    }
+  }
+}

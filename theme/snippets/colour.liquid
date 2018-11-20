@@ -1,0 +1,17 @@
+{% comment %}
+
+  colour-palette.liquid
+
+  {% include 'colour-palette' with title: TITLE, variable: SCSS VARIABLE, hex: HEX CODE %}
+
+  This is a generic colour palette we use on our style guide
+
+{% endcomment %}
+<div class="colour-palette">
+  <div class="colour-palette__colour" style="background-color: {{hex}};"></div>
+  <div class="colour-palette__information">
+    <span class="colour-palette__title"><strong>{{title}}</strong></span>
+    <span class="colour-palette__variable">{{variable}}</span>
+    <span class="colour-palette__hex">{{hex}}</span>
+  </div>
+</div>

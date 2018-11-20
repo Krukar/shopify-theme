@@ -1,0 +1,29 @@
+.textarea {
+  margin: 0 0 rem(16);
+
+  &__label {
+    display: block;
+
+    margin: 0 0 rem(8);
+
+    color: $black;
+
+    font-size: rem(16);
+  }
+
+  &__element {
+    display: block;
+
+    width: 100%;
+    padding: rem(8);
+
+    border: solid thin $border;
+
+    line-height: 1;
+
+    &::-webkit-input-placeholder { color: $grey-medium; }
+    &::-moz-placeholder { color: $grey-medium; }
+    &:-ms-input-placeholder { color: $grey-medium; }
+    &:-moz-placeholder { color: $grey-medium; }
+  }
+}

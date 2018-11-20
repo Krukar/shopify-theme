@@ -1,0 +1,57 @@
+{% comment %}
+
+    Activate Customer Account
+
+    Customers are directed to this page after clicking a link in the activate account email
+
+{% endcomment %}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>{{ 'customer.activate_account.title' | t }}</h1>            
+            <p>{{ 'customer.activate_account.subtext' | t }}</p>                                
+        </div>
+    </div>
+
+    {% form 'activate_customer_password' %}
+    {{ form.errors | default_errors }}
+
+    <div class="row">
+        <div class="col-sm-6">
+            {% assign passwordLabel = 'customer.activate_account.password' | t %}
+            {% include 'input' 
+            id: 'CustomerPassword',
+            type: 'password',
+            name: 'customer[password]',
+            label: passwordLabel,
+            class: 'input__label', 
+            placeholder: passwordLabel, 
+            required: true
+            %} 
+        </div>
+        <div class="col-sm-6">
+            {% assign passwordConfirmationLabel = 'customer.activate_account.password_confirm' | t %}
+            {% include 'input' 
+            id: 'CustomerPassword',
+            type: 'password',
+            name: 'customer[password_confirmation]',
+            label: passwordConfirmationLabel,
+            class: 'input__label', 
+            placeholder: passwordConfirmationLabel, 
+            required: true
+            %}
+        </div>                
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            {% assign activeAccountText = 'customer.activate_account.submit' | t %}
+            {% assign declineAccountText = 'customer.activate_account.cancel' | t %}            
+            {% include 'button' with class: 'button', text: activeAccountText, type: 'submit' %}
+            {% include 'button' with class: 'button', text: declineAccountText, type: 'submit' %}
+        </div>
+    </div>
+
+    {% endform %}       
+
+</div>

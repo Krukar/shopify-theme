@@ -1,0 +1,57 @@
+{% comment %}
+
+  textarea.liquid
+
+  {% include 'textarea' 
+    with id: 'example',* 
+    name: 'example',
+    label: 'Textarea Example',* 
+    class: 'example', 
+    value: 'Textarea value', 
+    placeholder: 'Example placeholder', 
+    required: boolean,
+    autofocus: boolean,
+    disabled: boolean
+  %}
+
+  * Denotes required
+
+{% endcomment %}
+
+<div class="textarea{% unless class == blank %} textarea--{{ class }}{% endunless %}">
+
+  <label for="{{ id }}" class="textarea__label{% unless class == blank %} textarea__label--{{ class }}{% endunless %}">
+    {{ label }}
+  </label>
+
+  <textarea
+    id="{{ id }}"
+
+    class="textarea__element{% unless class == blank %} textarea__element--{{ class }}{% endunless %}"
+
+    {% unless name == blank %}
+      name="{{ name }}"
+    {% endunless %}
+
+    {% unless value == blank %}
+      value="{{ value }}"
+    {% endunless %}
+
+    {% unless placeholder == blank %}
+      placeholder="{{ placeholder }}"
+    {% endunless %}
+
+    {% if required == true %}
+      required
+    {% endif %}
+
+    {% if autofocus == true %}
+      autofocus
+    {% endif %}
+
+    {% if disabled == true %}
+      disabled
+    {% endif %}
+  ></textarea>
+
+</div>

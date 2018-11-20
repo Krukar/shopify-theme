@@ -1,0 +1,63 @@
+{% comment %}
+
+  video-vimeo.liquid
+
+  {% include 'video-vimeo' with id: '280071244', autoplay: true, parameters: '&color=#FFFFFF'  %}
+
+  id:         string*  
+  autoplay:   boolean (default: false)
+  parameters: string
+
+  * Denotes required
+
+  Video player support Vimeo embedding. 
+  https://player.vimeo.com/video/<ID>?paramA=value&paramB=value
+
+  Useful Parameters:
+    - autoplay
+    - loop
+    - color (hex value)
+    - byline
+    - title
+    - fun
+    - autopause
+    - background
+    - quality
+    - muted
+
+  Full List: 
+  https://help.vimeo.com/hc/en-us/articles/360001494447-Using-Player-Parameters
+
+{% endcomment %}
+
+{% if id %}
+  {% assign url_base = 'https://player.vimeo.com/video/' | append: id %}
+  {% assign url_params = '?' %}
+
+  {% comment %}
+    Autoplay
+  {% endcomment %}
+  {% if autoplay %}
+    {% assign url_params = url_params | append: 'autoplay=1' %}  
+  {% else %}
+    {% assign url_params = url_params | append: 'autoplay=0' %}  
+  {% endif %}
+  
+  {% comment %}
+    Additional Parameters
+  {% endcomment %}
+  {% if parameters %}
+    {% assign url_params = url_params | append: parameters %}  
+  {% endif %}
+
+  {% comment %}
+    iFrame Embed for YouTube
+  {% endcomment %}
+  <div class="video__container video__container--vimeo">
+    <iframe src="{{ url_base | append: url_params }}" 
+            class="video__iframe" 
+            frameborder="0" 
+            allowfullscreen>          
+    </iframe>
+  </div>  
+{% endif %}

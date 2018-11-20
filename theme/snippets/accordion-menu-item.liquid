@@ -1,0 +1,27 @@
+{% comment %}
+
+  accordion-menu-item.liquid
+
+  Outputs an accordion menu item as an accesible toggle, link, or as a span if link is set to #
+
+  {% include 'accordion-menu-item' with [link], level: [aria-level] %}
+
+{% endcomment %}
+
+{% if link.levels > 0 %}
+
+  <div role="heading" aria-level="{{ level }}">
+    <button class="{{ class }}-item {{ class }}-item--trigger {{ class }}-item--{{ level }} js__toggle--{{ class }}" aria-expanded="false" aria-controls="{{ link.title | handle }}">
+      {{ link.title }}
+    </button>
+  </div>
+
+{% elsif link.url != '#' %}
+
+  <a class="{{ class }}-item {{ class }}-item--link {{ class }}-item--{{ level }}" href="{{ link.url }}">{{ link.title }}</a>
+
+{% else %}
+
+  <span class="{{ class }}-item {{ class }}-item--text {{ class }}-item--{{ level }}" tabindex="0">{{ link.title }}</span>
+
+{% endif %}

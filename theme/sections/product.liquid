@@ -1,0 +1,30 @@
+{% comment %}
+
+  sections/product.liquid
+
+{% endcomment %}
+
+<div class="product" data-section-id="{{ section.id }}" data-section-type="product">
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col col-12 col-md-6">
+
+        {% include 'product-gallery' with images: product.images %}
+
+      </div>
+
+      <div class="col col-12 col-md-6 order-md-first">
+
+        {% include 'product-information' with title: product.title, description: product.description %}
+
+        {% include 'product-form' with product: product %}
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% include 'product-data' with product: product %}

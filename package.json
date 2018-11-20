@@ -1,0 +1,49 @@
+{
+  "name": "themodo-dragon",
+  "version": "0.0.1",
+  "description": "Base Shopify Theme",
+  "license": "ISC",
+  "engines": {
+    "node": ">=6.12.2"
+  },
+  "scripts": {
+    "dev": "webpack --progress --watch --config webpack.config.js",
+    "prod": "webpack -p --progress --config webpack.config.js",
+    "stylelint": "stylelint 'src/scss/**/*.scss' --fix --syntax scss",
+    "themekit": "shopify-themekit --config ./theme/config.yml --dir ./theme -v"
+  },
+  "dependencies": {
+    "bootstrap": "^4.1.1",
+    "jquery": "^3.3.1",
+    "normalize.css": "^8.0.0",
+    "slick-carousel": "^1.8.1",
+    "whatwg-fetch": "^2.0.4"
+  },
+  "devDependencies": {
+    "@shopify/themekit": "^1.0.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "css-loader": "^0.28.11",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-import-resolver-webpack": "^0.10.0",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^1.1.11",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1",
+    "style-loader": "^0.21.0",
+    "stylelint": "^9.2.0",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-order": "^0.8.1",
+    "stylelint-webpack-plugin": "^0.10.4",
+    "webpack": "^4.6.0",
+    "webpack-cli": "^2.0.15"
+  }
+}

@@ -1,0 +1,37 @@
+{% comment %}
+
+  dropdown-item.liquid
+
+  Outputs a dropdown menu item as an accesible link
+
+  {% include 'dropdown-item' with [link], level: [aria-level] %}
+
+
+
+{% if link.levels > 0 %}
+
+  <div role="heading" aria-level="{{ level }}">
+    <button class="{{ class }}-item {{ class }}-item--trigger {{ class }}-item--{{ level }} js__toggle--{{ class }}" aria-expanded="false" aria-controls="{{ link.title | handle }}">
+      {{ link.title }}
+    </button>
+  </div>
+
+{% elsif link.url != '#' %}
+
+  <a class="{{ class }}-item {{ class }}-item--link {{ class }}-item--{{ level }}" href="{{ link.url }}">{{ link.title }}</a>
+
+{% else %}
+
+  <span class="{{ class }}-item {{ class }}-item--text {{ class }}-item--{{ level }}" tabindex="0">{{ link.title }}</span>
+
+{% endif %}
+
+{% endcomment %}
+
+{% if link.levels > 0 %}
+  <a class="{{ class }}-item {{ class }}-item--link {{ class }}-item--{{ level }}" role="menuitem" aria-haspopup="true" aria-expanded="false" href="{{ link.url }}" tabindex="0">{{ link.title }}</a>
+{% elsif link.url != '#' %}
+  <a class="{{ class }}-item {{ class }}-item--link {{ class }}-item--{{ level }}" role="menuitem" href="{{ link.url }}" tabindex="0">{{ link.title }}</a>
+{% else %}
+  <span class="{{ class }}-item {{ class }}-item--text {{ class }}-item--{{ level }}" role="menuitem" href="{{ link.url }}">{{ link.title }}</span>
+{% endif %}

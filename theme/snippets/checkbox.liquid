@@ -1,0 +1,47 @@
+{% comment %}
+
+  checkbox.liquid
+
+  {% include 'checkbox' with
+    id: 'example',*
+    name: 'example',
+    label: 'text',* 
+    class: 'example', 
+    value: 'Checkbox value', *
+    checked: boolean,
+    disabled: boolean
+  %}
+
+  * Denotes required
+
+{% endcomment %}
+
+<div class="checkbox{% unless class == blank %} checkbox--{{ class }}{% endunless %}">
+
+  <input
+    id="{{ id }}"
+
+    class="checkbox__element{% unless class == blank %} checkbox__element--{{ class }}{% endunless %}"
+
+    type="checkbox"
+
+    {% unless name == blank %}
+      name="{{ name }}"
+    {% endunless %}
+
+    value="{{ value }}"
+
+    {% if checked == true %}
+      checked
+    {% endif %}
+
+    {% if disabled == true %}
+      disabled
+    {% endif %}
+  >
+
+  <label for="{{ id }}" class="checkbox__label{% unless class == blank %} checkbox__label--{{ class }}{% endunless %}">
+    {{ label }}
+  </label>
+
+</div>

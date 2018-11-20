@@ -1,0 +1,38 @@
+/* ============
+_colour-palette.scss
+Generic colour palette
+============ */
+
+.colour-palette {
+  margin-bottom: rem(16);
+
+  border: solid thin $border;
+
+  &__colour {
+    height: 50px;
+    width: 100%;
+    padding-bottom: 50%;
+  }
+
+  &__information {
+    display: flex;
+    flex-direction: column;
+
+    padding: rem(8);
+  }
+
+  &__title {
+    margin-bottom: rem(8);
+  }
+
+  &__variable {
+    margin-bottom: rem(4);
+  }
+
+  &__variable,
+  &__hex {
+    color: $grey-medium;
+
+    font-size: 0.875rem;
+  }
+}

@@ -1,0 +1,55 @@
+{% comment %}
+
+  icons.liquid
+
+  Style Guide icons
+
+{% endcomment %}
+
+<div data-section-id="{{ section.id }}" data-section-type="icons">
+
+  <div class="row">
+    <div class="col">
+
+      <h2>Icons</h2>
+
+      <div class="row">
+
+        {% for block in section.blocks %}  
+          <div class="col">
+            <div class="icon-example">
+              {% include 'icon' with class: block.settings.class %}
+
+              <p>{{block.settings.name}}</p>
+            </div>
+          </div>
+        {% endfor %}
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+   "name":"Icons",
+   "blocks":[
+   {
+     "type":"icon",
+     "name":"Icon",
+     "settings":[
+     {
+       "type":"text",
+       "id":"class",
+       "label":"Icon Class"
+     },
+     {
+       "type":"text",
+       "id":"name",
+       "label":"Icon Name"
+     }
+     ]
+   }
+   ]
+ }
+ {% endschema %}

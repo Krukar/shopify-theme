@@ -1,0 +1,15 @@
+.product-option {
+  &__legend {
+    margin-bottom: rem(12);
+  }
+
+  &__values {
+    display: flex;
+
+    margin-bottom: rem(12);
+  }
+
+  .radio {
+    margin-right: rem(16);
+  }
+}

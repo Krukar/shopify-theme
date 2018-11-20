@@ -1,0 +1,9 @@
+/* ============
+_functions.scss
+Theme dependent functions
+============ */
+
+// Converts px to rem
+@function rem($px) {
+  @return #{$px / 16}rem;
+}

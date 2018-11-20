@@ -1,0 +1,59 @@
+{% comment %}
+  
+  accordion-menu.liquid
+
+  Converts a nested menu in to an accesible accordion
+
+  {% include 'accordion-menu' with menu: [MENU ID], class: class %}
+
+{% endcomment %}
+
+<nav class="{{ class }}">
+  <ul class="{{ class }}__list {{ class }}__list--1" role="presentation">
+
+    {% for level-1 in linklists[menu].links %}
+      {% comment %}
+        Output level 1
+      {% endcomment %}
+      <li class="{{ class }}__item {{ class }}__item--1">
+        {% include 'accordion-menu-item' with link: level-1, level: 1 %}
+
+        {% comment %}
+          Output level 2 if it exists
+        {% endcomment %}
+        {% if level-1.levels > 0 %}
+          <ul id="{{ level-1.title | handle }}" class="{{ class }}__list {{ class }}__list--2 d-none" aria-labelledby="{{ level-1.title | handle }}">
+
+            {% for level-2 in level-1.links %}
+              <li class="{{ class }}__item {{ class }}__item--2">
+                {% include 'accordion-menu-item' with link: level-2, level: 2 %}
+
+                  {% comment %}
+                    Output level 3 if it exists
+                  {% endcomment %}
+                  {% if level-2.levels > 0 %}
+                    <ul id="{{ level-2.title | handle }}" class="{{ class }}__list {{ class }}__list--3 d-none" aria-labelledby="{{ level-2.title | handle }}">
+                      {% for level-3 in level-2.links %}
+                        <li class="{{ class }}__item {{ class }}__item--3">
+                          {% include 'accordion-menu-item' with link: level-3, level: 3 %}
+                        </li>
+                      {% endfor %}
+
+                      {% include 'accordion-menu-show-all' with link: level-2, level: 3 %}
+
+                    </ul>
+                  {% endif %}
+
+              </li>
+            {% endfor %}
+            
+            {% include 'accordion-menu-show-all' with link: level-1, level: 2 %}
+          
+          </ul>
+        {% endif %}
+      
+      </li>
+    {% endfor %}
+
+  </ul>
+</nav>

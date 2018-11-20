@@ -1,0 +1,24 @@
+/* ============
+_radio.scss
+Input type checkbox element
+============ */
+
+.radio {
+  display: flex;
+
+  margin: 0 0 rem(8);
+
+  &__label {
+    display: block;
+
+    color: $black;
+
+    font-size: rem(16);
+
+    cursor: pointer;
+  }
+
+  &__element {
+    margin-right: rem(8);
+  }
+}

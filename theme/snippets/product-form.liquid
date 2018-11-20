@@ -1,0 +1,22 @@
+{% comment %}
+
+  product-form.liquid
+
+  {% include 'product-form' with product: product %}
+
+{% endcomment %}
+
+
+<form class="product-form">
+
+  {% include 'product-options' with options: product.options_with_values %}
+
+  {% include 'product-quantity' %}
+
+  {% include 'product-price' %} 
+
+  {% assign text = 'product.form.add_to_cart' | t %}
+
+  {% include 'button' with type: 'submit' class: 'submit' text: text %}
+
+</form>

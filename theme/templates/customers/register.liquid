@@ -1,0 +1,80 @@
+{% comment %}
+
+    Customer Account Registration
+      
+{% endcomment %}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>{{ 'customer.register.title' | t }}</h1>
+
+            {% form 'create_customer' %}
+
+            {{ form.errors | default_errors }}
+
+            <div class="row">
+                <div class="col-sm-6">        
+                    {% assign firstNameLabel = 'customer.register.first_name' | t %}
+                    {% include 'input' 
+                        id: 'first_name',
+                        type: 'text',
+                        name: 'customer[first_name]',
+                        label: firstNameLabel,
+                        class: 'input__element', 
+                        placeholder: firstNameLabel, 
+                        required: true
+                    %}
+                </div>
+                <div class="col-sm-6">
+                    {% assign lastNameLabel = 'customer.register.last_name' | t %}
+                    {% include 'input' 
+                        id: 'last_name', 
+                        type: 'text',
+                        name: 'customer[last_name]',
+                        label: lastNameLabel,
+                        class: 'input__element', 
+                        placeholder: lastNameLabel, 
+                        required: true
+                    %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    {% assign emailLabel = 'customer.register.email' | t %}
+                    {% include 'input' 
+                        id: 'email',
+                        type: 'email',
+                        name: 'customer[email]',
+                        label: emailLabel,
+                        class: 'input__element', 
+                        placeholder: emailLabel, 
+                        required: true
+                    %}
+                </div>
+                <div class="col-sm-6">
+                    {% assign passwordLabel = 'customer.register.password' | t %}
+                    {% include 'input' 
+                        id: 'password',
+                        type: 'password',
+                        name: 'customer[password]',
+                        label: passwordLabel,
+                        class: 'input__element', 
+                        placeholder: passwordLabel, 
+                        required: true
+                    %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">   
+                    {% assign createButtonText = 'customer.register.submit' | t %}
+                    {% include 'button' with text: createButtonText, type: 'submit' %}                    
+                    <a class="button" href="/account/login">{{'customer.register.cancel' | t}}</a>
+                </div>
+            </div>
+
+            {% endform %}
+            
+        </div>
+    </div>
+</div>

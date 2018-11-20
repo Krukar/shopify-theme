@@ -1,0 +1,40 @@
+{% comment %}
+
+    Individual Order Page
+      
+{% endcomment %}
+
+{% paginate customer.orders by 20 %}
+    {% if customer.orders.size != 0 %}
+    <table class="customer-order">      
+        <thead>
+        <tr>
+            <th class="text-left">{{ 'customer.orders.order_number' | t }}</th>            
+            <th class="text-left">{{ 'customer.orders.date' | t }}</th>
+            <th class="text-left">{{ 'customer.orders.payment_status' | t }}</th>
+            <th class="text-left">{{ 'customer.orders.fulfillment_status' | t }}</th>            
+            <th class="text-right">{{ 'customer.orders.total' | t }}</th>
+        </tr>
+        </thead>
+        <tbody>          
+        {% for order in customer.orders %}
+            <tr>
+                <td class="text-left" data-label="{{ 'customer.orders.order_number' | t }}">{{ order.name | link_to: order.customer_url }}</td>
+                <td class="text-left" data-label="{{ 'customer.orders.date' | t }}">{{ order.created_at | date: format: 'month_day_year' }}</td>
+                <td class="text-left" data-label="{{ 'customer.orders.payment_status' | t }}">{{ order.financial_status_label }}</td>
+                <td class="text-left" data-label="{{ 'customer.orders.fulfillment_status' | t }}">{{ order.fulfillment_status_label }}</td>
+                <td class="text-right" data-label="{{ 'customer.orders.total' | t }}">{{ order.total_price | money }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>{{ 'customer.orders.none' | t }}</p>
+    {% endif %}
+
+    {% if paginate.pages > 1 %}
+    {% include 'pagination' %}
+    {% endif %}
+
+{% endpaginate %}
+

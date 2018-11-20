@@ -1,0 +1,28 @@
+{% comment %}
+
+  sections/header.liquid
+
+{% endcomment %}
+
+<header id="header" class="section section--header header">
+  <div class="d-block d-md-none">
+    {% include 'accordion-menu' with menu: section.settings.main_nav, class: "mobile-menu" %}
+  </div>
+
+  <div class="d-none d-md-block">
+    {% include 'dropdown-menu' with menu: section.settings.main_nav, class: 'dropdown' %}
+  </div>
+</header>
+
+{% schema %}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "id": "main_nav",
+        "type": "link_list",
+        "label": "Main Navigation"
+      }
+    ]
+  }
+{% endschema %}

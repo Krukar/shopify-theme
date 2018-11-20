@@ -1,0 +1,32 @@
+{% comment %}
+
+  product-option.liquid
+
+  Outputs a single product option
+
+  {% include 'product-option' with option: option %}
+
+{% endcomment %}
+
+<fieldset class="product-option product-option__--{{ option.name }}">
+  <legend class="product-option__legend">
+    {{ option.name }}
+  </legend>
+
+  <div class="product-option__values">
+
+    {% for value in option.values %}
+
+      {% include 'radio' with 
+        id: value,
+        class: 'product-option'
+        name: option.name, 
+        label: value, 
+        value: value
+      %}
+
+    {% endfor %}
+
+  </div>
+
+</fieldset>

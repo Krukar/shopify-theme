@@ -1,0 +1,18 @@
+{% comment %}
+
+  product-quantity.liquid
+
+  Selects product quantity
+
+  {% include 'product-quantity' %}
+
+{% endcomment %}
+
+{% include 'input' 
+  type: 'number',
+  name: 'quantity',
+  label: 'Product Quantity',
+  class: 'product-quantity', 
+  value: 1,
+  min: 1
+%}

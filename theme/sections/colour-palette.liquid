@@ -1,0 +1,55 @@
+{% comment %}
+
+  colour-palette.liquid
+
+  Style Guide colour palette
+
+{% endcomment %}
+
+<div data-section-id="{{ section.id }}" data-section-type="colour-palette">
+
+  <div class="row">
+    <div class="col">
+      <h2>Colour Palettes</h2>
+
+      <div class="row">
+
+        {% for block in section.blocks %}  
+          <div class="col-4 col-md-3 col-xl-2">
+            {% include 'colour' with title: block.settings.title, variable: block.settings.variable, hex: block.settings.colour %}
+          </div>
+        {% endfor %}
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+   "name":"Colour Palette",
+   "blocks":[
+      {
+         "type":"colour",
+         "name":"Colour",
+         "settings":[
+            {
+               "type":"color",
+               "id":"colour",
+               "label":"Colour"
+            },
+            {
+               "type":"text",
+               "id":"title",
+               "label":"Colour Title"
+            },
+            {
+               "type":"text",
+               "id":"variable",
+               "label":"Colour Variable"
+            }
+         ]
+      }
+   ]
+}
+{% endschema %}

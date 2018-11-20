@@ -1,0 +1,56 @@
+{% comment %}
+  
+  dropdown-menu.liquid
+
+  Converts a nested menu in to an accesible dropdown
+
+  {% include 'dropdown-menu' with menu: [MENU ID], class: class %}
+
+{% endcomment %}
+
+<nav class="{{ class }}" aria-label="{{ linklists[menu].title }}">
+  <ul class="{{ class }}__list {{ class }}__list--1" role="menubar" aria-label="{{ linklists[menu].title }}">
+
+    {% for level-1 in linklists[menu].links %}
+      {% comment %}
+        Output level 1
+      {% endcomment %}
+      <li class="{{ class }}__item {{ class }}__item--1">
+        {% include 'dropdown-item' with link: level-1, level: 1 %}
+
+        {% comment %}
+          Output level 2 if it exists
+        {% endcomment %}
+        {% if level-1.levels > 0 %}
+          <ul class="{{ class }}__list {{ class }}__list--2" role="menu" aria-label="{{ level-1.title }}">
+
+            {% for level-2 in level-1.links %}
+              <li class="{{ class }}__item {{ class }}__item--2">            
+                {% include 'dropdown-item' with link: level-2, level: 2 %}
+
+                  {% comment %}
+                    Output level 3 if it exists
+                  {% endcomment %}
+                  {% if level-2.levels > 0 %}
+                    <ul class="{{ class }}__list {{ class }}__list--3" role="menu" aria-label="{{ level-2.title }}">
+
+                      {% for level-3 in level-2.links %}
+                        <li class="{{ class }}__item {{ class }}__item--3">
+                          {% include 'dropdown-item' with link: level-3, level: 3 %}
+                        </li>
+                      {% endfor %}
+                      
+                    </ul>
+                  {% endif %}
+
+              </li>
+            {% endfor %}
+
+          </ul>
+        {% endif %}
+
+      </li>
+    {% endfor %}
+
+  </ul>
+</nav>

@@ -1,0 +1,16 @@
+.dropdown {
+  &__list {
+    &--1 {
+      display: inline-flex;
+    }
+
+    &--2,
+    &--3 {
+      display: none;
+    }
+
+    &--active {
+      display: block;
+    }
+  }
+}

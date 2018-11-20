@@ -1,0 +1,13 @@
+.product-thumbnail {
+  position: relative;
+
+  &__image {
+    width: 100%;
+  }
+
+  .product-price {
+    &__sale {
+      text-decoration: line-through;
+    }
+  }
+}

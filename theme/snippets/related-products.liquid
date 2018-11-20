@@ -1,0 +1,26 @@
+{% comment %}
+
+  related-products.liquid
+
+  Outputs thumbnails of products related to current product
+
+  {% include 'related-products' product_limit = [limit] collection = [collection] %}
+  
+  [limit] = an integer representing the max number of products to be displayed
+  [collection] = handle of collection related products should be pulled from
+
+{% endcomment %}
+
+<div class="related-products">
+  {% if collections[collection].products_count > 1 %}
+    <div class="related-products__title">Related Products ** replace with translation</div>
+
+    <div class="related-products__wrapper">
+      {% for rel_product in collections[collection].products limit: product_limit %}
+        {% unless rel_product.id == product.id %}
+          {% include 'product-thumbnail' with product: rel_product %}
+        {% endunless %}
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>

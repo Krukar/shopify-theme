@@ -1,0 +1,33 @@
+{% comment %}
+
+  snippets/breadcrumbs-li.liquid
+
+  {% include 'breadcrumbs-li' with name: 'name', position: 1, hyperlink: shop.url %}
+
+  name:       string*
+  position:   integer*
+  hyperlink:  string
+
+  * Denotes required
+
+{% endcomment %}
+
+{% assign item_prop_name = 'itemprop="name"' %}
+
+<li class="breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+
+  {% if position > 1 %}
+    <span class="breadcrumbs__separator" aria-hidden="true">&#47;</span>
+  {% endif %}
+  
+  {% if hyperlink %}
+    <a itemprop="item" itemscope itemtype="http://schema.org/Thing" title="{{ name }}" href="{{ hyperlink }}">
+      <span {{ item_prop_name }}>{{ name }}</span>
+    </a>
+  {% else %}
+    <span {{ item_prop_name }}>{{ name }}</span>
+  {% endif %}
+
+  <meta itemprop="position" content="{{ position }}" />  
+
+</li>

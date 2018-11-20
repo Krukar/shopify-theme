@@ -1,0 +1,19 @@
+/* ============
+_global.scss
+Global elements
+============ */
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+hr {
+  margin: rem(16) 0;
+  border-top: solid rem(1) $border;
+}

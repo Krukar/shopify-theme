@@ -1,0 +1,15 @@
+{% comment %}  
+
+  accordion-show-all.liquid
+
+  Outputs a menu item linking to landing page for mobile item
+
+  {% include 'show-all' with link: [link], level: NUMBER %}
+
+{% endcomment %}
+
+<li class="{{ class }}__item {{ class }}__item--{{ level }} {{ class }}__item--show-all">
+  <a class="{{ class }}-item {{ class }}-item--link {{ class }}-item--{{ level }}" href="#TO DO LINK GOES HERE">
+    {{ 'navigation.mobile_show_all' | t }}
+  </a>
+</li>

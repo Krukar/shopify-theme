@@ -1,0 +1,56 @@
+{% comment %}
+
+  nested-menu.liquid
+
+  Converts a nested menu in to an accesible list
+
+  {% include 'nested-menu' with menu: [MENU ID], class: 'string' %}
+
+{% endcomment %}
+
+<nav class="{{ class }}">
+  <ul class="{{ class }}__list {{ class }}__list--1">
+
+    {% for level-1 in linklists[menu].links %}
+      {% comment %}
+        Output level 1
+      {% endcomment %}
+      <li class="{{ class }}__item {{ class }}__item--1">
+        {% include 'nested-menu-item' with link: level-1, level: 1 %}
+
+        {% comment %}
+          Output level 2 if it exists
+        {% endcomment %}
+        {% if level-1.levels > 0 %}
+          <ul class="{{ class }}__list {{ class }}__list--2">
+
+            {% for level-2 in level-1.links %}
+              <li class="{{ class }}__item {{ class }}__item--2">            
+                {% include 'nested-menu-item' with link: level-2, level: 2 %}
+
+                  {% comment %}
+                    Output level 3 if it exists
+                  {% endcomment %}
+                  {% if level-2.levels > 0 %}
+                    <ul class="{{ class }}__list {{ class }}__list--3">
+
+                      {% for level-3 in level-2.links %}
+                        <li class="{{ class }}__item {{ class }}__item--3">
+                          {% include 'nested-menu-item' with link: level-3, level: 3 %}
+                        </li>
+                      {% endfor %}
+                      
+                    </ul>
+                  {% endif %}
+
+              </li>
+            {% endfor %}
+
+          </ul>
+        {% endif %}
+
+      </li>
+    {% endfor %}
+
+  </ul>
+</nav>

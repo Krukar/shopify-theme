@@ -1,0 +1,47 @@
+<!doctype html>
+<html class="supports-no-cookies" lang="{{ shop.locale }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="canonical" href="{{ canonical_url }}">
+
+  {% if settings.favicon != blank %}
+    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
+  {% endif %}
+
+  {% include 'seo-title' %}
+
+  {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+
+  {% include 'styles' %}
+
+  {{ content_for_header }}
+
+  <script type="text/javascript">window.demac = {};</script>
+</head>
+
+<body id="{{ page_title | handle }}" class="{{ page_title | handle }} template-{{ template.name | handle }}">
+
+  {% section 'header' %}
+
+  {% comment %}
+    Breadcrumbs
+  {% endcomment %}
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        {% include 'breadcrumbs' %}
+      </div>
+    </div>
+  </div>
+
+  <main role="main" id="MainContent">
+    {{ content_for_layout }}
+  </main>
+
+  {% include 'scripts' %}
+</body>
+</html>

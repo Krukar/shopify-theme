@@ -1,0 +1,23 @@
+{% comment %}
+
+  product-information.liquid
+
+  Displays basic product information. This information is static and should not change
+
+  {% include 'product-information' with title: product.title, description: product.description %}
+
+{% endcomment %}
+
+<div class="product-information">
+
+  <div class="product-information__title">
+    <h1>{{ title }}</h1>
+  </div>
+
+  <div class="product-information__description">
+    <p>{{ description }}</p>
+  </div>
+
+  {% include 'product-price' %}
+
+</div>

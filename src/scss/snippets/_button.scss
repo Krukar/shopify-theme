@@ -1,0 +1,55 @@
+/* ============
+_button.scss
+Button
+============ */
+
+.button {
+  margin: 0 0 rem(16);
+  padding: rem(8) rem(16);
+
+  border: solid thin $border;
+
+  background: $brand;
+  color: $white;
+
+  font-size: rem(16);
+
+  cursor: pointer;
+
+  @include transition;
+
+  &:hover {
+    background: $brand-alternate;
+  }
+
+  &:focus {
+    background: $brand-alternate;
+  }
+
+  &--block {
+    display: block;
+
+    width: 100%;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.button-text-link {
+  padding: 0 rem(16) 0 0;
+
+  border: none;
+
+  background: none;
+
+  text-decoration: underline;
+
+  color: $brand;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}

@@ -1,0 +1,122 @@
+{% comment %}
+
+    Customer Account Login
+
+    Includes:
+    - a link to the registration page 
+    - a form to request a password reset
+
+{% endcomment %}
+
+<div class="container">
+
+  <div class="row">
+      
+    {% comment %}
+    New Customers
+    {% endcomment %}
+    
+    <div class="col-sm-6">
+
+      <h2>{{ 'customer.account.returning_customer' | t }}</h2>
+      <p>{{ 'customer.account.returning_customer_desc' | t }}</p>            
+      
+      {% form 'customer_login' %}
+      
+      {{ form.errors | default_errors }}
+      
+      {% assign emailAddressLabel = 'customer.login.email_address' | t %}
+      {% include 'input' 
+      id: 'customer_email',
+      type: 'email',
+      name: 'customer[email]',
+      label: emailAddressLabel,
+      class: 'input__label', 
+      placeholder: emailAddressLabel, 
+      required: true
+      %}
+      
+      {% assign passwordLabel = 'customer.login.password' | t %}
+      {% include 'input' 
+      id: 'customer_password',
+      type: 'password',
+      name: 'customer[password]',
+      label: passwordLabel,
+      class: 'input__label', 
+      placeholder: passwordLabel, 
+      required: true
+      %}        
+
+      <div class="row">
+        <div class="col">
+          <p>
+            <button class="button-text-link js-toggle" aria-controls="resetPassword">
+              {{ 'customer.reset_password.link' | t }}
+            </button>   
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          {% assign signinButtonText = 'customer.login.sign_in' | t %}
+          {% include 'button' with text: signinButtonText, type: 'submit' %}    
+        </div>
+      </div>
+      
+      {% endform %}
+
+      {% comment %}
+      Reset Password      
+      {% endcomment %}
+
+      <div id="resetPassword" class="row d-none">    
+        <div class="col">
+          <div class="row">
+            <div class="col">
+              <h3>{{ 'customer.recover_password.title' | t }}</h3>
+              <p>{{ 'customer.recover_password.subtext' | t }}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col" >
+              {% form 'recover_customer_password' %}                
+              {{ form.errors | default_errors }}                            
+                {% assign recoverEmailLabel = 'customer.recover_password.email' | t %}
+                {% include 'input' 
+                type: 'email',
+                name: 'email',
+                label: recoverEmailLabel,
+                class: 'input__element', 
+                placeholder: recoverEmailLabel, 
+                required: true
+                %}
+
+                {% assign submitButtonText = 'customer.recover_password.submit' | t %}
+                {% assign cancelButtonText = 'customer.recover_password.cancel' | t %}
+                {% include 'button' with text: submitButtonText, type: 'submit' %}    
+                {% include 'button' with class: 'js-reset-password-link', text: cancelButtonText, type: 'button' %}                                                            
+              {% endform %}
+            </div>
+          </div>
+        </div>      
+      </div>
+    </div>
+  
+    {% comment %}
+    Returning Customers
+    {% endcomment %}
+
+    <div class="col-sm-6">
+      <h2>{{ 'customer.account.new_customer' | t }}</h2>
+      <p>{{ 'customer.account.new_customer_desc' | t }}</p>    
+      {% if shop.customer_accounts_enabled %}
+      {% if shop.customer_accounts_optional %}
+        {{ 'Create an account' | customer_register_link | replace: 'href', 'class="button" href'}}
+      {% endif %}          
+      {% endif %} 
+    </div>
+
+  </div>
+
+</div>

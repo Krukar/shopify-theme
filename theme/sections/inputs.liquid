@@ -1,0 +1,132 @@
+{% comment %}
+
+  inputs.liquid
+
+  Style Guide input exmaples
+
+{% endcomment %}
+
+<div data-section-id="{{ section.id }}" data-section-type="inputs">
+
+  <div class="row">
+    <div class="col">
+
+      <h2>Inputs</h2>
+
+      <div class="row">
+
+        <div class="col">
+          {% include 'input' with 
+            id: 'default', 
+            label: 'Default label', 
+            placeholder: 'Default placeholder'
+          %}
+        </div>
+
+        <div class="col">
+          {% include 'input' with 
+            id: 'disabled', 
+            label: 'Disabled label', 
+            placeholder: 'Disabled placeholder',
+            disabled: true
+          %}
+        </div>
+
+        {% for block in section.blocks %}  
+          <div class="col">
+            {% include 'input' with 
+              id: block.settings.input_id, 
+              type: block.settings.input_type, 
+              name: block.settings.input_name, 
+              class: block.settings.input_class, 
+              label: block.settings.input_label, 
+              value: block.settings.input_value, 
+              placeholder: block.settings.input_placeholder,
+              required: block.settings.input_required,
+              autofocus: block.settings.input_autofocus,
+              disabled: block.settings.input_disabled
+            %}
+          </div>
+        {% endfor %}
+
+      </div>     
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+ "name": "Inputs",
+ "blocks":[
+   {
+     "type": "inputs",
+     "name": "Input",
+     "settings":[
+     {
+       "type": "text",
+       "id": "input_id",
+       "label": "Input ID",
+       "info": "Required for accessibility. Will be used for the name and for attributes."
+     },
+     {
+       "type": "text",
+       "id": "input_type",
+       "label": "Input Type",
+       "info": "Optional. Will set the input type. If possible use html5 types such as email, password, number, etc."
+     },
+     {
+       "type": "text",
+       "id": "input_name",
+       "label": "Input Name",
+       "info": "Optional. Some Shopify forms require a specific name to submit correctly. Please consult Shopify documentation."
+     },
+     {
+       "type": "text",
+       "id": "input_label",
+       "label": "Input Label",
+       "info": "Required for accessibility. If design demands no label then hide it visually."
+     },
+     {
+       "type": "text",
+       "id": "input_class",
+       "label": "Input Class",
+       "info": "Optional class name. Will be used as a BEM modifier and applied to input--CLASS, input__label--CLASS, input__element--CLASS"
+     },
+     {
+       "type": "text",
+       "id": "input_value",
+       "label": "Input Value",
+       "info": "Optional value. For pre populating fields such as email or address"
+     },
+     {
+       "type": "text",
+       "id": "input_placeholder",
+       "label": "Input Placeholder",
+       "info": "Optional placeholder"
+     },
+     {
+       "type": "checkbox",
+       "id": "input_required",
+       "label": "Input Required",
+       "default": false,
+       "info": "Default false. Will add required attribute."
+     },
+     {
+       "type": "checkbox",
+       "id": "input_autofocus",
+       "label": "Input Autofocus",
+       "default": false,
+       "info": "Default false. Will focus the element on page load. Only 1 input can be autofocused per page."
+     },
+     {
+       "type": "checkbox",
+       "id": "input_disabled",
+       "label": "Input Disabled",
+       "default": false,
+       "info": "Default false. Will disable an input."
+     }
+     ]
+   }
+ ]
+}
+{% endschema %}

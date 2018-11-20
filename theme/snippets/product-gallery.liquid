@@ -1,0 +1,21 @@
+{% comment %}
+
+  product-gallery.liquid
+
+  Outputs a carousel of product images
+
+  {% include 'nested-menu' with images: product.images %}
+
+{% endcomment %}
+
+<div class="product-gallery">
+
+  {% for image in images %}
+
+    <div class="product-gallery__slide">
+      <img class="product-gallery__image" src="{{ image | img_url: '1000x' }}" alt="{{ image.alt }}" />
+    </div>
+
+  {% endfor %}
+
+</div>

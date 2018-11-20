@@ -1,0 +1,72 @@
+{% comment %}
+
+  input.liquid
+
+  {% include 'input' 
+    with id: 'example',* 
+    type: 'text',
+    name: 'example',
+    label: 'Input Example',* 
+    class: 'example', 
+    value: 'Input value', 
+    placeholder: 'Example placeholder', 
+    required: boolean,
+    autofocus: boolean,
+    disabled: boolean,
+    max: number,
+    min: number
+  %}
+
+  * Denotes required
+
+{% endcomment %}
+
+<div class="input{% unless class == blank %} input--{{ class }}{% endunless %}">
+
+  <label for="{{ id }}" class="input__label{% unless class == blank %} input__label--{{ class }}{% endunless %}">
+    {{ label }}
+  </label>
+
+  <input
+    id="{{ id }}"
+
+    class="input__element{% unless class == blank %} input__element--{{ class }}{% endunless %}"
+
+    {% unless type == blank %}    
+      type="{{ type }}"
+    {% endunless %}
+
+    {% unless name == blank %}
+      name="{{ name }}"
+    {% endunless %}
+
+    {% unless value == blank %}
+      value="{{ value }}"
+    {% endunless %}
+
+    {% unless placeholder == blank %}
+      placeholder="{{ placeholder }}"
+    {% endunless %}
+
+    {% if required == true %}
+      required
+    {% endif %}
+
+    {% if autofocus == true %}
+      autofocus
+    {% endif %}
+
+    {% if disabled == true %}
+      disabled
+    {% endif %}
+
+    {% unless min == blank %}
+      min="{{ min }}"
+    {% endunless %}    
+
+    {% unless max == blank %}
+      max="{{ max }}"
+    {% endunless %}    
+  >
+
+</div>

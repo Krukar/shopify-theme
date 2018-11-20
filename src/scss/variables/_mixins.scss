@@ -1,0 +1,24 @@
+/* ============
+_mixins.scss
+Theme dependent mixins
+============ */
+
+// Default background cover
+@mixin background-cover() {
+  background-position-x: center;
+  background-position-y: center;
+  background-repeat-x: no-repeat;
+  background-repeat-y: no-repeat;
+  background-size: cover;
+}
+
+// Converts rem to px
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: #{ $size / 16px }rem;
+}
+
+// Default transition for CSS
+@mixin transition($prop: all, $speed: $animation-speed-medium, $ease: $cubic-bezier) {
+  transition: $prop $speed $ease;
+}

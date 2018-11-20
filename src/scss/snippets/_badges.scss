@@ -1,0 +1,22 @@
+/* ============
+_badges.scss
+Product Badges
+============ */
+
+.badges {
+  position: absolute;
+
+  top: rem(2);
+  left: rem(2);
+
+  margin: 0;
+  padding: 0;
+
+  &__item {
+    display: flex;
+
+    margin: 0;
+
+    list-style: none;
+  }
+}

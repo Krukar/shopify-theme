@@ -1,0 +1,60 @@
+{% comment %}
+
+    A paginated list of a customers saved addresses.
+
+{% endcomment %}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col">
+            <header role="banner">
+                <h1>{{ 'customer.account.title' | t }}</h1>                                
+                <button class="button js-toggle" aria-controls="AddressNewForm">
+                    {{ 'customer.addresses.add_new' | t }}
+                </button>
+            </header>
+            <p>
+                <a href="/account">{{ 'customer.account.return' | t }}</a>                
+            </p>
+        </div>
+    </div>
+
+    {% comment %}
+
+    Add New Address
+    
+    {% endcomment %}
+
+    <div class="row">
+      <div class="col">
+          {% include  'customer-address-new' %}            
+      </div>
+    </div>
+
+    <hr>    
+
+   {% comment %}
+   
+   List of Customer Addresses
+
+   {% endcomment %}
+
+    <div class="row">
+      <div class="col">
+          <h2>{{ 'customer.addresses.title' | t }}</h2> 
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        {% paginate customer.addresses by 5 %}
+            {% include  'customer-address-list' %}                      
+        
+            {% if paginate.pages > 1 %}
+                {% include 'pagination' %}
+            {% endif %}
+        {% endpaginate %}
+        </div>
+    </div>              
+</div>

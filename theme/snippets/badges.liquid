@@ -1,0 +1,47 @@
+{% comment %}
+
+  snippets/badges.liquid
+
+  {% include 'badges' %}
+
+  Retrieves the badge_order from the settings and then runs a loop to display them. 
+  It first checks the badge is the Sale badge to run the price logic.
+  Otherwise it will simply check to see if the metafield is present
+  for the ID presented.
+  
+  Note:
+  The ID must be the same within both the locale and what is appended
+  at the end of the settings IDs. For instance in locale it is 
+  `best_seller` and within settings it is `badge_show_best_seller`.
+
+{% endcomment %}
+
+{% assign badges_order = settings.badge_order | split: ',' %}
+
+<ul class="badges">  
+  {% for badge in badges_order %}
+    {% assign badge_id = badge | strip %}    
+    {% assign badge_class = 'badge--' | append: badge_id %}
+    {% assign badge_title = 'general.badges.' | append: badge_id | t %}    
+    {% assign show_badge_id = 'badge_show_' | append: badge_id %}
+    {% assign show_badge = settings[show_badge_id] %}
+    
+    {% comment %}
+      Sale Badge
+    {% endcomment %}
+    {% if show_badge and badge_id == 'sale' and product.compare_at_price_max > product.price %}
+      <li class="badges__item">
+        {% include 'badge' with text: badge_title, class: badge_class %}
+      </li> 
+    {% endif %}
+       
+    {% comment %}
+      Other Badges
+    {% endcomment %}
+    {% if show_badge and badge_id != 'sale' and product.metafields.badge[badge_id] != blank %}
+      <li class="badges__item">
+        {% include 'badge' with text: badge_title, class: badge_class %}
+      </li> 
+    {% endif %}
+  {% endfor %}
+</ul>

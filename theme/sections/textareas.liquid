@@ -1,0 +1,125 @@
+{% comment %}
+
+  textareas.liquid
+
+  Style Guide text area exmaples
+
+{% endcomment %}
+
+<div data-section-id="{{ section.id }}" data-section-type="textareas">
+
+  <div class="row">
+    <div class="col">
+
+      <h2>Textareas</h2>
+
+      <div class="row">
+
+        <div class="col">
+          {% include 'textarea' with 
+            id: 'default', 
+            label: 'Default textarea', 
+            placeholder: 'Default textarea'
+          %}
+        </div>
+
+        <div class="col">
+          {% include 'textarea' with 
+            id: 'disabled', 
+            label: 'Disabled textarea', 
+            placeholder: 'Disabled textarea',
+            disabled: true
+          %}
+        </div>
+
+        {% for block in section.blocks %}  
+          <div class="col">
+            {% include 'textarea' with 
+              id: block.settings.textarea_id, 
+              name: block.settings.textarea_name, 
+              class: block.settings.textarea_class, 
+              label: block.settings.textarea_label, 
+              value: block.settings.textarea_value, 
+              placeholder: block.settings.textarea_placeholder,
+              required: block.settings.textarea_required,
+              autofocus: block.settings.textarea_autofocus,
+              disabled: block.settings.textarea_disabled
+            %}
+          </div>
+        {% endfor %}
+
+      </div>     
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+ "name": "Textareas",
+ "blocks":[
+   {
+     "type": "Textareas",
+     "name": "Textarea",
+     "settings":[
+     {
+       "type": "text",
+       "id": "textarea_id",
+       "label": "Textarea ID",
+       "info": "Required for accessibility. Will be used for the name and for attributes."
+     },
+     {
+       "type": "text",
+       "id": "textarea_name",
+       "label": "Textarea Name",
+       "info": "Optional. Some Shopify forms require a specific name to submit correctly. Please consult Shopify documentation."
+     },
+     {
+       "type": "text",
+       "id": "textarea_label",
+       "label": "Textarea Label",
+       "info": "Required for accessibility. If design demands no label then hide it visually."
+     },
+     {
+       "type": "text",
+       "id": "textarea_class",
+       "label": "Textarea Class",
+       "info": "Optional class name. Will be used as a BEM modifier and applied to Textarea--CLASS, textarea__label--CLASS, textarea__element--CLASS"
+     },
+     {
+       "type": "text",
+       "id": "textarea_value",
+       "label": "Textarea Value",
+       "info": "Optional value. For pre populating fields such as email or address"
+     },
+     {
+       "type": "text",
+       "id": "textarea_placeholder",
+       "label": "Textarea Placeholder",
+       "info": "Optional placeholder"
+     },
+     {
+       "type": "checkbox",
+       "id": "textarea_required",
+       "label": "Textarea Required",
+       "default": false,
+       "info": "Default false. Will add required attribute."
+     },
+     {
+       "type": "checkbox",
+       "id": "textarea_autofocus",
+       "label": "Textarea Autofocus",
+       "default": false,
+       "info": "Default false. Will focus the element on page load. Only 1 textarea can be autofocused per page."
+     },
+     {
+       "type": "checkbox",
+       "id": "textarea_disabled",
+       "label": "Textarea Disabled",
+       "default": false,
+       "info": "Default false. Will disable."
+     }
+     ]
+   }
+ ]
+}
+{% endschema %}

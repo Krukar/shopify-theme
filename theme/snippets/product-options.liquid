@@ -1,0 +1,19 @@
+{% comment %}
+
+  product-options.liquid
+
+  Displays a product options form
+
+  {% include 'product-options' with options: product.options_with_values %}
+
+{% endcomment %}
+
+<div class="product-options">
+
+  {% for option in options %}
+
+    {% include 'product-option' with option: option %}
+
+  {% endfor %}
+
+</div>

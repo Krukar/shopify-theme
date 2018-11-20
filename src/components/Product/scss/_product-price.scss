@@ -1,0 +1,11 @@
+.product-price {
+  margin-bottom: rem(16);
+
+  &__money {
+    &--sale {
+      color: $grey-medium;
+
+      text-decoration: line-through;
+    }
+  }
+}

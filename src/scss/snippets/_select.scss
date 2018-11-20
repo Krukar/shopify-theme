@@ -1,0 +1,22 @@
+/* ============
+_select.scss
+Select element
+============ */
+
+.select {
+  margin: 0 0 rem(8);
+
+  &__label {
+    display: block;
+
+    margin: 0 0 rem(8);
+
+    color: $black;
+
+    font-size: rem(16);
+  }
+
+  &__element {
+    width: 100%;
+  }
+}

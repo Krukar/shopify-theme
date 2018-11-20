@@ -1,0 +1,236 @@
+{% comment %}
+
+  page.style-guide.liquid
+
+{% endcomment %}
+<div class="container">
+
+  {% comment %}
+    Title
+  {% endcomment %}
+  <div class="row">
+    <div class="col">
+
+      <h1>{{ page.title }}</h1>
+
+    </div>
+  </div>
+
+  {% comment %}
+    Colour Palettes
+  {% endcomment %}
+  {% section 'colour-palette' %} 
+
+  {% comment %}
+    Headers
+  {% endcomment %}
+  <div class="row">
+    <div class="col">
+      <h1>Heading 1</h1>
+      <h2>Heading 2</h2>
+      <h3>Heading 3</h3>
+      <h4>Heading 4</h4>
+      <h5>Heading 5</h5>
+      <h6>Heading 6</h6>
+    </div>
+  </div>
+
+  {% comment %}
+    Anchors
+  {% endcomment %}
+  <div class="row">
+    <div class="col">
+
+      <h2>Anchors</h2>
+
+      <div class="row">
+
+        <div class="col">
+          <a href="#">Generic Anchor Tag</a>
+        </div>
+
+        <div class="col">
+          <p>
+            <a href="#">Generic Anchor Tag Inside Paragraph</a>
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  {% comment %}
+    HR
+  {% endcomment %}
+  <div class="row">
+    <div class="col">
+
+      <h2>Dividing Line</h2>
+
+      <hr />
+
+    </div>
+  </div>
+
+  {% comment %}
+    Paragraph
+  {% endcomment %}
+  <div class="row">
+    <div class="col">
+
+      <h2>Paragraph</h2>
+
+      <p>This is a standard paragraph element with an <a href="#">embedded link</a>. It also has <em>em tags</em> as well as <strong>strong tags.</strong> Gochujang try-hard drinking vinegar, lo-fi you probably haven't heard of them pickled copper mug messenger bag master cleanse mlkshk skateboard blue bottle. Cronut vinyl meditation, seitan activated charcoal messenger bag godard hashtag enamel pin four dollar toast brunch hexagon drinking vinegar taxidermy jean shorts. Williamsburg stumptown irony lomo roof party.</p>
+
+    </div>
+  </div>
+
+  {% comment %}
+    Blockquote
+  {% endcomment %}
+  <div class="row">
+    <div class="col">
+
+      <h2>Blockquote</h2>
+
+      <blockquote>This is a blockquote. Activated charcoal microdosing leggings fam tattooed waistcoat. Street art, fingerstache hashtag selfies fashion axe kale chips prism. Tote bag farm-to-table fanny pack 8-bit. Hexagon art party pop-up, organic brunch pitchfork la croix jean shorts unicorn VHS four loko tousled wayfarers lomo. Trust fund normcore vaporware kombucha pitchfork yr.</blockquote>
+
+    </div>
+  </div>
+
+  {% comment %}
+    Ordered List
+  {% endcomment %}
+  <div class="row">
+    <div class="col">
+
+      <h2>Ordered List</h2>
+
+      <ol>
+        <li>Ordered List Item 1</li>
+        <li>Ordered List Item 2</li>
+        <li>Ordered List Item 3</li>
+      </ol>
+
+    </div>
+  </div>
+
+  {% comment %}
+    Unordered List
+  {% endcomment %}
+  <div class="row">
+    <div class="col">
+
+      <h2>Unordered List</h2>
+
+      <ul>
+        <li>Unordered List Item 1</li>
+        <li>Unordered List Item 2</li>
+        <li>Unordered List Item 3</li>
+      </ul>
+
+    </div>
+  </div>
+
+  {% comment %}
+    Buttons
+  {% endcomment %}
+  {% section 'buttons' %} 
+
+  {% comment %}
+    Inputs
+  {% endcomment %}
+  {% section 'inputs' %}
+
+  {% comment %}
+    Checkboxes
+  {% endcomment %}
+  {% section 'checkboxes' %}
+
+  {% comment %}
+    Radios
+  {% endcomment %}
+  {% section 'radios' %}
+
+  {% comment %}
+    Text Area
+  {% endcomment %}
+  {% section 'textareas' %}
+
+  {% comment %}
+    Select
+  {% endcomment %}
+  <div class="row">
+    <div class="col">
+
+      <h2>Select</h2>
+
+      <div class="row">
+        <div class="col">
+
+          <div class="select">
+            <label for="select-example-one" class="select__label">
+              Select example without groups
+            </label>
+
+            <select id="select-example-one" class="select__element" name="select-example-one">
+              <option value="1">Amsterdam</option>
+              <option value="2">Buenos Aires</option>
+              <option value="3">Delhi</option>
+              <option value="4">Hong Kong</option>
+              <option value="5">London</option>
+              <option value="6">Los Angeles</option>
+              <option value="7">Moscow</option>
+              <option value="8">Mumbai</option>
+              <option value="9">New York</option>
+              <option value="10">Sao Paulo</option>
+              <option value="11">Tokyo</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="col">
+
+          <div class="select">
+
+            <label for="select-example-two" class="select__label">
+              Select example with groups
+            </label>
+
+            <select id="select-example-two" class="select__element" name="select-example-two">
+              <optgroup label="Asia">
+                <option value="3">Delhi</option>
+                <option value="4">Hong Kong</option>
+                <option value="8">Mumbai</option>
+                <option value="11">Tokyo</option>
+              </optgroup>
+              <optgroup label="Europe">
+                <option value="1">Amsterdam</option>
+                <option value="5">London</option>
+                <option value="7">Moscow</option>
+              </optgroup>
+              <optgroup label="North America">
+                <option value="6">Los Angeles</option>
+                <option value="9">New York</option>
+              </optgroup>
+              <optgroup label="South America">
+                <option value="2">Buenos Aires</option>
+                <option value="10">Sao Paulo</option>
+              </optgroup>
+            </select>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% comment %}
+  Icons
+  {% endcomment %}
+  {% section 'icons' %}
+
+</div>

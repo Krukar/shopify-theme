@@ -1,0 +1,20 @@
+/* ============
+_colors.scss
+Theme dependent colors
+============ */
+
+// Neutral
+$black: black;
+$white: white;
+$grey-light: #f6f6fe;
+$grey-medium: grey;
+$grey-dark: darkgrey;
+$invisible: rgba(0, 0, 0, 0);
+
+// Site Palette
+$brand: #3498db;
+$brand-alternate: #9b59b6;
+$error: #e74c3c;
+$border: $grey-medium;
+$body-background-color: $white;
+$body-text-color: $black;

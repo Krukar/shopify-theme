@@ -1,0 +1,20 @@
+{% comment %}
+
+  product-data.liquid
+
+  {% include 'product-data' with product: product %}
+
+  Outputs product data in json format, including inventory quanity for all variants and metafields that fall under demac namespace
+
+{% endcomment %}
+<script type="text/javascript">
+  window.demac.product = {{ product | json }};
+  window.demac.product.metafields = {{ product.metafields.demac | json }};
+  window.demac.product.selected_or_first_available_variant = {{ product.selected_or_first_available_variant.id }};
+
+  {% for variant in product.variants %}
+    window.demac.product.variants[{{ forloop.index0 }}].inventory_quantity = {{ variant.inventory_quantity }};
+    window.demac.product.variants[{{ forloop.index0 }}].price = '{{ variant.price | money }}';
+    window.demac.product.variants[{{ forloop.index0 }}].compare_at_price = '{{ variant.compare_at_price | money }}';
+  {% endfor %}
+</script> 

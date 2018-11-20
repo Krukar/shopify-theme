@@ -1,0 +1,14 @@
+{% comment %}
+
+  snippets/badge.liquid
+
+  {% include 'badges' with text: 'name', class: 'class_name' %}
+
+  text:   string*
+  class:  string
+
+  * Denotes required
+
+{% endcomment %}
+
+<span class="badge{% unless class == blank %} class{% endunless %}">{{ text }}</span>

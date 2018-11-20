@@ -1,0 +1,145 @@
+<div id="AddressNewForm" class="d-none customer-address-new">
+    {% form 'customer_address', customer.new_address %}
+    <h2>{{ 'customer.addresses.add_new' | t }}</h2> 
+    <div class="row">
+        <div class="col-sm-6">
+          {% assign customerFirstName = 'customer.addresses.first_name' | t %}
+          {% include 'input' 
+              id: 'AddressFirstNameNew',
+              type: 'text',
+              name: 'address[first_name]',
+              label: customerFirstName,
+              placeholder: 'First Name', 
+              required: true
+          %}
+        </div>
+        <div class="col-sm-6">
+          {% assign customerLastName = 'customer.addresses.last_name' | t %}
+          {% include 'input' 
+              id: 'AddressLastNameNew',
+              type: 'text',
+              name: 'address[last_name]',
+              label: customerLastName,
+              placeholder: customerLastName, 
+              required: true
+          %}
+        </div>
+        <div class="col-sm-12">
+          {% assign customerCompany = 'customer.addresses.company' | t %}    
+          {% include 'input' 
+              id: 'AddressCompanyNew',
+              type: 'text',
+              name: 'address[company]',
+              label: customerCompany,
+              placeholder: customerCompany, 
+              required: false
+          %}
+        </div> 
+        <div class="col-sm-12">
+          {% assign customerAddress1 = 'customer.addresses.address1' | t %}    
+          {% include 'input' 
+              id: 'AddressAddress1New',
+              type: 'text',
+              name: 'address[address1]',
+              label: customerAddress1,
+              placeholder: customerAddress1, 
+              required: true
+          %}
+        </div>
+        <div class="col-sm-12">
+          {% assign customerAddress2 = 'customer.addresses.address2' | t %}    
+          {% include 'input' 
+              id: 'AddressAddress2New',
+              type: 'text',
+              name: 'address[address2]',
+              label: customerAddress2,
+              placeholder: customerAddress2, 
+              required: false
+          %}
+        </div>
+        <div class="col-sm-6">
+          {% assign customerCity = 'customer.addresses.city' | t %}    
+          {% include 'input' 
+              id: 'AddressCityNew',
+              type: 'text',
+              name: 'address[city]',
+              label: customerCity,
+              placeholder: customerCity, 
+              required: true
+          %}
+        </div>
+        
+        <div class="select col-sm-6">
+          <label  
+              for="AddressCountryNew" 
+              class="sort__label select__label">
+              {{ 'customer.addresses.country' | t }}
+          </label>
+          <select
+              class="sort__element select__element"
+              name="address[country]"
+              id="AddressCountryNew"
+              data-default="{{ form.country }}" required>
+              {{ country_option_tags }}
+          </select>
+        </div>
+    
+        <div id="AddressProvinceContainerNew" class="select col-sm-6" style="">
+          <label  
+              for="AddressProvinceNew"
+              class="sort__label select__label">
+              {{ 'customer.addresses.province' | t }}
+          </label>
+          <select
+              class="sort__element select__element"
+              name="address[province]"
+              id="AddressProvinceNew"
+              data-default="{{ form.province }}">
+          </select>                
+        </div>
+           
+        <div class="col-sm-6">
+          {% assign customerZip = 'customer.addresses.zip' | t %}    
+          {% include 'input' 
+              id: 'AddressZipNew',
+              type: 'text',
+              name: 'address[zip]',
+              label: customerZip,
+              placeholder: customerZip, 
+              required: true
+          %}
+        </div>
+        <div class="col">
+          {% assign customerPhone = 'customer.addresses.phone' | t %}    
+          {% include 'input' with
+              id: 'AddressPhoneNew',
+              type: 'text',
+              name: 'address[phone]',
+              label: customerPhone,
+              placeholder: customerPhone, 
+              required: true
+          %}
+        </div>
+        <div class="col-sm-12">      
+            {% assign addressDefaultLabel = 'customer.addresses.set_default' | t %}
+            <div class="input">
+                {% include 'checkbox' with
+                id: 'address_default_address_new',
+                name: 'address[default]',
+                label: addressDefaultLabel,
+                class: 'checkbox__label',
+                value: '1'
+              %}
+            </div>          
+        </div>        
+        <div class="col-sm-12">                   
+          <div class="input">            
+            {% assign addAddressText = 'customer.addresses.add' | t %}
+            {% assign cancelAddressText = 'customer.addresses.cancel' | t %}
+            {% include 'button' with class: 'button', text: addAddressText, type: 'submit' %}
+            {% include 'button' with class: 'button js-toggle', text: cancelAddressText, type: 'button' %}                        
+          </div>
+        </div>
+    </div>                                                    
+    {% endform %}        
+</div>

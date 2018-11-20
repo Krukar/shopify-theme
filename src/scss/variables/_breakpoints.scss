@@ -1,0 +1,16 @@
+/* ============
+_breakpoints.scss
+Theme dependent breakpoints
+============ */
+
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+:export {
+  sm: $breakpoint-sm;
+  md: $breakpoint-md;
+  lg: $breakpoint-lg;
+  xl: $breakpoint-xl;
+}

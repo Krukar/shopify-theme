@@ -1,0 +1,88 @@
+{% comment %}
+
+  snippets/breadcrumbs.liquid
+
+  {% include 'breadcrumbs' %}
+  
+  Google Structured Data Testing Tool
+  https://search.google.com/structured-data/testing-tool
+
+  The snippet has been included within the theme.liquid layout and will be seen across the site.
+  However it is excluded from the index, cart and list collections templates. 
+
+  By default it will display the home and current page. Additionally this checks for the 
+  following pages to display additional steps in the hierarchy which includes:
+
+  - The use of the breadcrumb.parent metafield
+  - Product pages with collections 
+  - Blog post page to display parent blog 
+  - Blog being filtered by current tags
+
+{% endcomment %}
+
+{% unless template contains 'index' or template contains 'cart' or template contains 'list-collections' %}
+
+  {% assign product_page_position = 2 %}
+  {% assign current_page_position = 2 %}
+  {% assign current_page_title = page_title %}   
+  {% assign home_page_title = 'general.breadcrumbs.home' | t %}
+
+  <nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
+    <ol class="breadcrumbs__list" itemscope itemtype="http://schema.org/BreadcrumbList">
+
+      {% comment %} 
+        Label for home page 
+      {% endcomment %}
+      {% include 'breadcrumbs-li' with name: home_page_title, position: 1, hyperlink: shop.url %}
+
+
+      {% comment %} 
+        IF: Parent Collection Metafield is Present
+      {% endcomment %}      
+      {% if collection.metafields.breadcrumb.parent != blank %}
+        {% assign breadcrumb_parent = collection.metafields.breadcrumb.parent %}
+        {% assign breadcrumb_parent_handle = breadcrumb_parent | handle %}
+        {% assign breadcrumb_parent_collection = collections[breadcrumb_parent_handle] %}
+        {% include 'breadcrumbs-li' with name: breadcrumb_parent_collection.title, position: 2, hyperlink: breadcrumb_parent_collection.url %}
+        {% assign current_page_position = current_page_position | plus: 1 %}
+        {% assign product_page_position = product_page_position | plus: 1 %}
+      {% endif %}
+
+      {% comment %} 
+        IF: Product page with collection
+      {% endcomment %}
+      {% if template contains 'product' and collection %}              
+        {% include 'breadcrumbs-li' with name: collection.title, position: product_page_position, hyperlink: collection.url %}    
+        {% assign current_page_position = current_page_position | plus: 1 %}
+      {% endif %}
+
+
+      {% comment %} 
+        IF: blog post / article template
+      {% endcomment %}
+      {% if template contains 'article' %}
+        {% include 'breadcrumbs-li' with name: blog.title, position: 2, hyperlink: blog.url %}      
+        {% assign current_page_position = current_page_position | plus: 1 %}
+      {% endif %}
+
+      {% comment %} 
+        IF: Blog listing with current tags
+      {% endcomment %}
+      {% if template contains 'blog' and current_tags %}
+        {% include 'breadcrumbs-li' with name: blog.title, position: 2, hyperlink: blog.url %}        
+        {%- capture blog_current_tags -%} 
+        {{ current_tags | join: " + " }} 
+        {%- endcapture -%}      
+        {% assign current_page_position = current_page_position | plus: 1 %}
+        {% assign current_page_title = blog_current_tags %}
+      {% endif %}  
+      
+
+      {% comment %} 
+        Current Page Title
+      {% endcomment %}    
+      {% include 'breadcrumbs-li' with name: current_page_title, position: current_page_position %}    
+
+    </ol>
+  </nav>
+{% endunless %}

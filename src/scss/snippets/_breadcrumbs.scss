@@ -1,0 +1,27 @@
+/* ============
+_breadcrumbs.scss
+Site Breadcrumbs
+============ */
+
+.breadcrumbs {
+  &__list {
+    display: flex;
+
+    margin: rem(16) 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  &__item {
+    margin: 0 rem(16) 0 0;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+
+  &__separator {
+    margin-right: rem(16);
+  }
+}

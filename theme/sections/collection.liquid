@@ -1,0 +1,89 @@
+{% comment %}
+
+  section/collection.liquid
+
+  {% section 'collection' %}
+
+  Outputs products of a given collection
+
+{% endcomment %}
+
+<div class="container">
+  <div class="row justify-content-end">
+    <div class="col-4">
+      {% include 'sort' %}
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+
+    {% for product in collection.products %}
+    <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+      {% include 'product-thumbnail' %}
+    </div>
+    {% endfor %} 
+
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Collection Sort",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Sort By Options"
+      },
+      {
+        "type": "text",
+        "id": "manual",
+        "label": "Manual",
+        "default": "Featured"
+      },
+      {
+        "type": "text",
+        "id": "price_ascending",
+        "label": "PriceA Ascending",
+        "default": "Price: Low to High"
+      },
+      {
+        "type": "text",
+        "id": "price_descending",
+        "label": "Price Descending",
+        "default": "Price: High to Low"
+      },
+      {
+        "type": "text",
+        "id": "title_ascending",
+        "label": "Title Ascending",
+        "default": "A-Z"
+      },
+      {
+        "type": "text",
+        "id": "title_descending",
+        "label": "Title Descending",
+        "default": "Z-A"
+      },
+      {
+        "type": "text",
+        "id": "created_ascending",
+        "label": "Created Ascending",
+        "default": "Oldest to Newest"
+      },
+      {
+        "type": "text",
+        "id": "created_descending",
+        "label": "Created Descending",
+        "default": "Newest to Oldest"
+      },
+      {
+        "type": "text",
+        "id": "best_selling",
+        "label": "Best Selling",
+        "default": "Best Selling"
+      }
+    ]
+  }
+{% endschema %}

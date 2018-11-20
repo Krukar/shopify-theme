@@ -1,0 +1,19 @@
+{% comment %}
+
+  customer-login.liquid
+
+  Outputs a customer login form using input snippets
+
+{% endcomment %}
+
+{% form 'customer_login' %}
+
+  {{ form.errors | default_errors }}
+
+  {% include 'input' with id: 'customer_email', name: 'customer[email]', label: 'Email Address', class: 'customer-login__input customer-login__input--email', type: 'email' %}
+
+  {% include 'input' with id: 'customer_password', name: 'customer[email]', label: 'Password', class: 'customer-login__input customer-login__input--password', type: 'password' %}
+
+  {% include 'button' with class: 'customer-login__submit', text: 'Sign In', type: 'submit' %}
+
+{% endform %}

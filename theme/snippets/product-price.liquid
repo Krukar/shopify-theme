@@ -1,0 +1,12 @@
+{% comment %} 
+    
+  product-price.liquid
+
+  Creates placeholers where JS will inject the price.
+  Why is the price injected via JS? The price changes on variants, so rather than hardcode it then overwrite it, we simply inject the price via JS.
+
+  {% include 'product-price' %} 
+
+{% endcomment %}
+
+<div class="product-price"></div>

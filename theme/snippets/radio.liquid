@@ -1,0 +1,45 @@
+{% comment %}
+
+  radio.liquid
+
+  {% include 'radio' with
+    id: 'example',*
+    name: 'example',*
+    label: 'text',* 
+    class: 'example', 
+    value: 'Radio value', *
+    selected: boolean,
+    disabled: boolean
+  %}
+
+  * Denotes required
+
+{% endcomment %}
+
+<div class="radio{% unless class == blank %} radio--{{ class }}{% endunless %}">
+
+  <input
+    id="{{ id }}"
+
+    class="radio__element{% unless class == blank %} radio__element--{{ class }}{% endunless %}"
+
+    type="radio"
+
+    name="{{ name }}"
+
+    value="{{ value }}"
+
+    {% if selected == true %}
+      selected
+    {% endif %}
+
+    {% if disabled == true %}
+      disabled
+    {% endif %}
+  />
+
+  <label for="{{ id }}" class="radio__label{% unless class == blank %} radio__label--{{ class }}{% endunless %}">
+    {{ label }}
+  </label>
+
+</div>

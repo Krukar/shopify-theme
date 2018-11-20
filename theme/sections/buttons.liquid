@@ -1,0 +1,63 @@
+{% comment %}
+
+  buttons.liquid
+
+  Style Guide button exmaples
+
+{% endcomment %}
+
+<div data-section-id="{{ section.id }}" data-section-type="buttons">
+
+  <div class="row">
+    <div class="col">
+
+      <h2>Buttons</h2>
+
+      <div class="row">
+
+        <div class="col">
+          {% include 'button' text: 'Default Button' %}
+        </div>
+
+        <div class="col">
+          {% include 'button' text: 'Disabled Button' disabled: true %}
+        </div>
+
+        <div class="col">
+          {% include 'button' class: 'block' text: 'Block Button' %}
+        </div>
+
+        {% for block in section.blocks %}  
+          <div class="col">
+            {% include 'button' with class: block.settings.class text: block.settings.text %}
+          </div>
+        {% endfor %}
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+   "name":"Buttons",
+   "blocks":[
+   {
+     "type":"button",
+     "name":"Button",
+     "settings":[
+     {
+       "type":"text",
+       "id":"class",
+       "label":"Button Class"
+     },
+     {
+       "type":"text",
+       "id":"text",
+       "label":"Button Text"
+     }
+     ]
+   }
+   ]
+ }
+ {% endschema %}

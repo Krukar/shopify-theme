@@ -1,0 +1,121 @@
+{% comment %}
+
+  radios.liquid
+
+  Style Guide checkbox exmaples
+
+{% endcomment %}
+
+<div data-section-id="{{ section.id }}" data-section-type="radios">
+
+  <div class="row">
+    <div class="col">
+
+      <h2>Radios</h2>
+
+      <div class="row">
+
+        <div class="col">
+          {% include 'radio' with 
+            id: 'default',
+            name: 'style-guide', 
+            label: 'Default Radio', 
+            value: 'Input value'
+          %}
+        </div>
+
+        <div class="col">
+          {% include 'radio' with 
+            id: 'default-toggle',
+            name: 'style-guide', 
+            label: 'Default Radio', 
+            value: 'Input value toggle'
+          %}
+        </div>
+
+        <div class="col">
+          {% include 'radio' with 
+            id: 'disabled',
+            name: 'disabled', 
+            label: 'Disabled Radio', 
+            value: 'Disabled value', 
+            disabled: true
+          %}
+        </div>
+
+        {% for block in section.blocks %}  
+          <div class="col">
+            {% include 'radio' with
+              id: block.settings.radio_id,
+              name: 'style-guide',
+              label: block.settings.radio_label,
+              class: block.settings.radio_class,
+              value: block.settings.radio_value,
+              checked: block.settings.radio_checked,
+              disabled: block.settings.radio_disabled
+            %}
+          </div>
+        {% endfor %}
+
+      </div>     
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+ "name": "Radio",
+ "blocks":[
+   {
+     "type": "radio",
+     "name": "Radio",
+     "settings":[
+     {
+       "type": "text",
+       "id": "radio_id",
+       "label": "Radio ID",
+       "info": "Required for accessibility. Will be used for the name and for attributes."
+     },
+     {
+       "type": "text",
+       "id": "radio_name",
+       "label": "Radio Name",
+       "info": "Required. Radio buttons are grouped by name attribute. For the purpose of this style guide they are all automatically grouped as style-guide"
+     },
+     {
+       "type": "text",
+       "id": "radio_label",
+       "label": "Radio Label",
+       "info": "Required for accessibility. If design demands no label then hide it visually."
+     },
+     {
+       "type": "text",
+       "id": "radio_class",
+       "label": "Radio Class",
+       "info": "Optional class name. Will be used as a BEM modifier and applied to radio--CLASS, radio__label--CLASS, radio__element--CLASS"
+     },
+     {
+       "type": "text",
+       "id": "radio_value",
+       "label": "Radio Value",
+       "info": "Required value."
+     },
+     {
+       "type": "checkbox",
+       "id": "radio_checked",
+       "label": "Radio Checked",
+       "default": false,
+       "info": "Optional. If true will check the checkbox."
+     },     
+     {
+       "type": "checkbox",
+       "id": "radio_disabled",
+       "label": "Radio Disabled",
+       "default": false,
+       "info": "Default false. Will disable an input."
+     }
+     ]
+   }
+ ]
+}
+{% endschema %}

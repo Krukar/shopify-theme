@@ -1,0 +1,112 @@
+/* ============
+_icons.scss
+Theme icons via Iconmoon
+
+Please place your icon files in src/scss/icons and rename them to glyphs.*
+============ */
+
+@font-face {
+  font-family: 'glyphs';
+  src: url('~SCSS/icons/glyphs.eot');
+  src:
+    url('~SCSS/icons/glyphs.eot#iefix') format('embedded-opentype'),
+    url('~SCSS/icons/glyphs.ttf') format('truetype'),
+    url('~SCSS/icons/glyphs.woff') format('woff'),
+    url('~SCSS/icons/glyphs.svg#glyphs') format('svg');
+
+  font-weight: normal;
+  font-style: normal;
+}
+
+$icon--bag-empty: "\e900";
+$icon--bag-full: "\e901";
+$icon--bird: "\e902";
+$icon--box: "\e903";
+$icon--checkmark: "\e904";
+$icon--chevron-down: "\e905";
+$icon--chevron-left: "\e906";
+$icon--chevron-right: "\e907";
+$icon--chevron-up: "\e908";
+$icon--cross: "\e909";
+$icon--diamond: "\e90a";
+$icon--exclamation: "\e90b";
+$icon--eye: "\e90c";
+$icon--flower: "\e90d";
+$icon--leaf: "\e90e";
+$icon--lion: "\e90f";
+$icon--mail: "\e910";
+$icon--minus: "\e911";
+$icon--phone: "\e912";
+$icon--play: "\e913";
+$icon--plus: "\e914";
+$icon--question: "\e915";
+$icon--quote: "\e916";
+$icon--recycle: "\e917";
+$icon--search: "\e918";
+$icon--share: "\e919";
+$icon--smiley: "\e91a";
+$icon--social-facebook: "\e91b";
+$icon--social-google: "\e91c";
+$icon--social-instagram: "\e91d";
+$icon--social-pinterest: "\e91e";
+$icon--social-twitter: "\e91f";
+$icon--star-empty: "\e920";
+$icon--star-full: "\e921";
+$icon--star-half: "\e922";
+$icon--thumbs-down: "\e923";
+$icon--thumbs-up: "\e924";
+$icon--tree: "\e925";
+$icon--user: "\e926";
+
+.icon {
+  font-family: 'glyphs', serif !important;
+  font-weight: normal;
+  font-variant: normal;
+  font-style: normal;
+  text-transform: none;
+  line-height: 1;
+  speak: none;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &.icon--bag-empty { &::before { content: $icon--bag-empty; } }
+  &.icon--bag-full { &::before { content: $icon--bag-full; } }
+  &.icon--bird { &::before { content: $icon--bird; } }
+  &.icon--box { &::before { content: $icon--box; } }
+  &.icon--checkmark { &::before { content: $icon--checkmark; } }
+  &.icon--chevron-down { &::before { content: $icon--chevron-down; } }
+  &.icon--chevron-left { &::before { content: $icon--chevron-left; } }
+  &.icon--chevron-right { &::before { content: $icon--chevron-right; } }
+  &.icon--chevron-up { &::before { content: $icon--chevron-up; } }
+  &.icon--cross { &::before { content: $icon--cross; } }
+  &.icon--diamond { &::before { content: $icon--diamond; } }
+  &.icon--exclamation { &::before { content: $icon--exclamation; } }
+  &.icon--eye { &::before { content: $icon--eye; } }
+  &.icon--flower { &::before { content: $icon--flower; } }
+  &.icon--leaf { &::before { content: $icon--leaf; } }
+  &.icon--lion { &::before { content: $icon--lion; } }
+  &.icon--mail { &::before { content: $icon--mail; } }
+  &.icon--minus { &::before { content: $icon--minus; } }
+  &.icon--phone { &::before { content: $icon--phone; } }
+  &.icon--play { &::before { content: $icon--play; } }
+  &.icon--plus { &::before { content: $icon--plus; } }
+  &.icon--question { &::before { content: $icon--question; } }
+  &.icon--quote { &::before { content: $icon--quote; } }
+  &.icon--recycle { &::before { content: $icon--recycle; } }
+  &.icon--search { &::before { content: $icon--search; } }
+  &.icon--share { &::before { content: $icon--share; } }
+  &.icon--smiley { &::before { content: $icon--smiley; } }
+  &.icon--social-facebook { &::before { content: $icon--social-facebook; } }
+  &.icon--social-google { &::before { content: $icon--social-google; } }
+  &.icon--social-instagram { &::before { content: $icon--social-instagram; } }
+  &.icon--social-pinterest { &::before { content: $icon--social-pinterest; } }
+  &.icon--social-twitter { &::before { content: $icon--social-twitter; } }
+  &.icon--star-empty { &::before { content: $icon--star-empty; } }
+  &.icon--star-full { &::before { content: $icon--star-full; } }
+  &.icon--star-half { &::before { content: $icon--star-half; } }
+  &.icon--thumbs-down { &::before { content: $icon--thumbs-down; } }
+  &.icon--thumbs-up { &::before { content: $icon--thumbs-up; } }
+  &.icon--tree { &::before { content: $icon--tree; } }
+  &.icon--user { &::before { content: $icon--user; } }
+}

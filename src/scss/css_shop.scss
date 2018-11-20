@@ -1,0 +1,53 @@
+/* ============
+css_shop.scss
+Main SASS file
+============ */
+
+/* ============
+Style Lint
+
+For more information about warnings and errors: https://stylelint.io/user-guide/rules/
+============ */
+
+/* ============
+BEM Rules
+
+BEM will be enforced using Styleline
+More information will be provided when implemented
+============ */
+
+/* ============
+CSS Property Order
+
+To order properties we'll be using stylelint-order
+More information will be provided when implemented
+============ */
+
+/* ============
+Normalize
+============ */
+@import "~normalize.css/normalize.css";
+
+/* ============
+Theme Variables
+============ */
+@import "variables";
+
+/* ============
+Core Modules
+============ */
+@import "core";
+
+/* ============
+Sections
+============ */
+@import "sections";
+
+/* ============
+Snippets
+============ */
+@import "snippets";
+
+/* ============
+Templates
+============ */

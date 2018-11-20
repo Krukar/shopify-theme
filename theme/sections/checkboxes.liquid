@@ -1,0 +1,111 @@
+{% comment %}
+
+  checkboxes.liquid
+
+  Style Guide checkbox exmaples
+
+{% endcomment %}
+
+<div data-section-id="{{ section.id }}" data-section-type="checkboxes">
+
+  <div class="row">
+    <div class="col">
+
+      <h2>Checkboxes</h2>
+
+      <div class="row">
+
+        <div class="col">
+          {% include 'checkbox' with 
+            id: 'default', 
+            label: 'Default Checkbox', 
+            value: 'Input value', 
+          %}
+        </div>
+
+        <div class="col">
+          {% include 'checkbox' with 
+            id: 'disabled', 
+            label: 'Disabled Checkbox', 
+            class: 'disabled',
+            value: 'Input value',
+            disabled: true 
+          %}
+        </div>
+
+        {% for block in section.blocks %}  
+          <div class="col">
+            {% include 'checkbox' with
+              id: block.settings.checkbox_id,
+              name: block.settings.checkbox_name,
+              label: block.settings.checkbox_label,
+              class: block.settings.checkbox_class,
+              value: block.settings.checkbox_value,
+              checked: block.settings.checkbox_checked,
+              disabled: block.settings.checkbox_disabled
+            %}
+          </div>
+        {% endfor %}
+
+      </div>     
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+ "name": "Checkboxes",
+ "blocks":[
+   {
+     "type": "checkbox",
+     "name": "Checkbox",
+     "settings":[
+     {
+       "type": "text",
+       "id": "checkbox_id",
+       "label": "Checkbox ID",
+       "info": "Required for accessibility. Will be used for the name and for attributes."
+     },
+     {
+       "type": "text",
+       "id": "checkbox_name",
+       "label": "Checkbox Name",
+       "info": "Optional. Some Shopify forms require a specific name to submit correctly. Please consult Shopify documentation."
+     },
+     {
+       "type": "text",
+       "id": "checkbox_label",
+       "label": "Checkbox Label",
+       "info": "Required for accessibility. If design demands no label then hide it visually."
+     },
+     {
+       "type": "text",
+       "id": "checkbox_class",
+       "label": "Checkbox Class",
+       "info": "Optional class name. Will be used as a BEM modifier and applied to checkbox--CLASS, checkbox__label--CLASS, checkbox__element--CLASS"
+     },
+     {
+       "type": "text",
+       "id": "checkbox_value",
+       "label": "Checkbox Value",
+       "info": "Required value."
+     },
+     {
+       "type": "checkbox",
+       "id": "checkbox_checked",
+       "label": "Checkbox Checked",
+       "default": false,
+       "info": "Optional. If true will check the checkbox."
+     },     
+     {
+       "type": "checkbox",
+       "id": "checkbox_disabled",
+       "label": "Checkbox Disabled",
+       "default": false,
+       "info": "Default false. Will disable an input."
+     }
+     ]
+   }
+ ]
+}
+{% endschema %}

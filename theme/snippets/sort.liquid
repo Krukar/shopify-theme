@@ -1,0 +1,23 @@
+{% comment %}  
+
+  snippets/collection-sort.liquid
+
+  {% include 'sort' %}
+
+  Outputs a sort drop down that inherits our select styles
+
+{% endcomment %}
+
+<div class="sort select">
+  <label for="sort" class="sort__label select__label">{{ section.settings.sort }}</label> 
+  <select id="sort" name="sort" class="sort__element select__element">
+    <option value="manual">{{ section.settings.manual }}</option>
+    <option value="price-ascending">{{ section.settings.price_ascending }}</option>
+    <option value="price-descending">{{ section.settings.price_descending }}</option>
+    <option value="title-ascending">{{ section.settings.title_ascending }}</option>
+    <option value="title-descending">{{ section.settings.title_descending }}</option>
+    <option value="created-ascending">{{ section.settings.created_ascending }}</option>
+    <option value="created-descending">{{ section.settings.created_descending }}</option>
+    <option value="best-selling">{{ section.settings.best_selling }}</option>
+  </select>
+</div>

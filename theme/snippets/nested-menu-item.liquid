@@ -1,0 +1,17 @@
+{% comment %}
+
+  nested-menu__link.liquid
+
+  Outputs a nested menu item as an accesible link, or as a span if link is set to #
+
+{% endcomment %}
+
+{% if link.url != '#' %}
+
+  <a class="{{ class }}-item {{ class }}-item--link {{ class }}-item--{{ level }}" href="{{ link.url }}">{{ link.title }}</a>
+
+{% else %}
+
+  <span class="{{ class }}-item {{ class }}-item--text {{ class }}-item--{{ level }}" tabindex="0">{{ link.title }}</span>
+
+{% endif %}
